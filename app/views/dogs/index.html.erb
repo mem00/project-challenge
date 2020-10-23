@@ -1,1 +1,2 @@
 <%= render partial: 'thumbnail', collection: @dogs, as: :dog %>
+<%= render partial: 'pagination', locals: {page: @page, num_of_pages: @num_of_pages}%>
