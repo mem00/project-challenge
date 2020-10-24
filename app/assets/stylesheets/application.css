@@ -19,3 +19,19 @@ header {
   display: flex;
   justify-content: space-between;
 }
+
+
+.pagination-bar{
+  margin: 10px 0;
+  text-align: center;
+}
+
+#current-page{
+  background-color: #FFFF00;
+}
+
+.page-nav-button, .page-nav-button-arrow{
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
