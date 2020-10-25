@@ -1,5 +1,5 @@
 class DogsController < ApplicationController
-  before_action :set_dog, only: [:show, :edit, :update, :destroy, :like]
+  before_action :set_dog, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token, only: [:like_dog]
 
   # GET /dogs
