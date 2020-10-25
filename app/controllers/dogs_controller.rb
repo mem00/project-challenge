@@ -1,5 +1,6 @@
 class DogsController < ApplicationController
   before_action :set_dog, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: [:like_dog]
 
   # GET /dogs
   # GET /dogs.json
@@ -64,6 +65,15 @@ class DogsController < ApplicationController
     end
   end
 
+  def like_dog
+    DogLike.create!({
+      dog_id: like_dog_params[:id],
+      user_id: current_user.id
+    })
+
+    head 200 and return
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dog
@@ -73,5 +83,9 @@ class DogsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def dog_params
       params.require(:dog).permit(:name, :description, images: [])
+    end
+
+    def like_dog_params
+      params.require(:dog).permit(:id)
     end
 end
