@@ -5,7 +5,7 @@ class DogsController < ApplicationController
   # GET /dogs.json
   def index
     @page = params[:page] || 1
-    @dogs, @page, @num_of_pages  = Dog.all.paginate(@page)    
+    @dogs, @page, @num_of_pages  = Dog.all.paginate(@page)
   end
 
   # GET /dogs/1
@@ -26,6 +26,7 @@ class DogsController < ApplicationController
   # POST /dogs.json
   def create
     @dog = Dog.new(dog_params)
+    @dog.user = current_user
 
     respond_to do |format|
       if @dog.save
