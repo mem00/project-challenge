@@ -20,6 +20,7 @@ class DogsController < ApplicationController
 
   # GET /dogs/1/edit
   def edit
+    redirect_to dog_path @dog unless @dog.user == current_user
   end
 
   # POST /dogs
