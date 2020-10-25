@@ -4,3 +4,13 @@
     <%= image_tag url_for(dog.images.first), class: "dog-photo", alt: "Photo of #{dog.name}" %>
   </article>
 </a>
+<button class="like" id=<%=dog.id%> <%="disabled" if !current_user || dog.user == current_user || liked = user_liked_dog(dog)%> >
+  <%if liked %>
+    &#9829
+  <%else%>
+    &#9825
+  <%end%>
+</button>
+<span id="num-likes<%=dog.id%>"><%= number_of_likes(dog)%></span>
+
+
