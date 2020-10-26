@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe 'Dog resource', type: :feature do
+  user = User.new
   it 'can create a profile' do
     visit new_dog_path
     fill_in 'Name', with: 'Speck'
@@ -11,7 +12,7 @@ describe 'Dog resource', type: :feature do
   end
 
   it 'can edit a dog profile' do
-    dog = create(:dog)
+    dog = create(:dog, user: user)
     visit edit_dog_path(dog)
     fill_in 'Name', with: 'Speck'
     click_button 'Update Dog'
@@ -19,7 +20,7 @@ describe 'Dog resource', type: :feature do
   end
 
   it 'can delete a dog profile' do
-    dog = create(:dog)
+    dog = create(:dog, user: user)
     visit dog_path(dog)
     click_link "Delete #{dog.name}'s Profile"
     expect(Dog.count).to eq(0)
