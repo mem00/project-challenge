@@ -1,3 +1,13 @@
+const goToPage = page => {
+  if(typeof page === "string"){
+    page = page.trim()
+  }
+  let newUrl = window.location.origin + window.location.pathname + "?page=" + page;
+  window.location.href = newUrl;
+  return false;
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
 
   let pageNavButtons = document.getElementsByClassName("page-nav-button");
@@ -15,13 +25,4 @@ document.addEventListener("DOMContentLoaded", () => {
     let page = document.getElementById("current-page").innerHTML;
     goToPage(parseInt(page) + 1);
   });
-
-  function goToPage(page){
-    if(typeof page === "string"){
-      page = page.trim()
-    }
-    let newUrl = window.location.origin + window.location.pathname + "?page=" + page;
-    window.location.href = newUrl;
-    return false;
-  }
 });
