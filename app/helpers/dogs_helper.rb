@@ -1,6 +1,7 @@
 module DogsHelper
   def number_of_likes dog
-    dog.dog_likes.size
+    #use count so filtered shows all likes
+    dog.dog_likes.count
   end
 
   def user_liked_dog dog
