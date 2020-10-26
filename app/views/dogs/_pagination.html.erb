@@ -3,4 +3,4 @@
   <% num_of_pages.times do |i|%>
     <button class="page-nav-button" <%= " disabled id = current-page" if page == i + 1 %> ><%= i + 1 %></button>
   <%end%>
-<button class="page-nav-button" id="forward-arrow" <%= "disabled" if page == num_of_pages %> >&#8594</button>
+<button class="page-nav-button" id="forward-arrow" <%= "disabled" if page == num_of_pages || num_of_pages == 0 %> >&#8594</button>
