@@ -6,7 +6,11 @@ class DogsController < ApplicationController
   # GET /dogs.json
   def index
     @page = params[:page] || 1
-    @dogs, @page, @num_of_pages  = Dog.all.paginate(@page)
+    if params[:likes].present?
+      @dogs, @page, @num_of_pages = Dog.ordered_likes_last_hour.paginate(@page, {:filtered => true})
+    else
+      @dogs, @page, @num_of_pages = Dog.all.paginate(@page)
+    end
   end
 
   # GET /dogs/1
@@ -72,6 +76,8 @@ class DogsController < ApplicationController
     })
 
     head 200 and return
+  rescue => e
+    puts "Error: #{e}"
   end
 
   private

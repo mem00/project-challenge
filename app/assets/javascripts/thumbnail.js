@@ -24,11 +24,13 @@ const likeDog = async dogLike => {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+const whenThumbnailReady = () => {
   let likeButtons = document.getElementsByClassName("like");
   for(let i = 0; i < likeButtons.length; i++){
     likeButtons[i].addEventListener("click", (e) =>{
       likeDog(e.target)
     });
   }
-});
+}
+
+document.addEventListener("turbolinks:load", whenThumbnailReady);

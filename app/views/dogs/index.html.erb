@@ -1,2 +1,5 @@
+<%= link_to("Filter By Likes Last Hour", dogs_path(page: @page, likes: "desc_last_hour") ) %>
+<span>  |  </span>
+<%= link_to("All dogs", dogs_path(page: @page) ) %>
 <%= render partial: 'thumbnail', collection: @dogs, as: :dog %>
 <%= render partial: 'pagination', locals: {page: @page, num_of_pages: @num_of_pages}%>
