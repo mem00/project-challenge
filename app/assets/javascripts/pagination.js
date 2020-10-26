@@ -16,10 +16,12 @@ const goToPage = page => {
 const whenPaginationReady = () => {
   //replace url if params don't match page
   let queryString = window.location.search;
-  let startOfPageNum = queryString.indexOf("page=") + "page=".length;
-  if(startOfPageNum > -1){
+  let pageLength = "page=".length;
+  let startOfPageNum = queryString.indexOf("page=") + pageLength;
+  if(startOfPageNum > -1 + pageLength){
     let pageNumSubstring = queryString.slice(startOfPageNum, startOfPageNum+1)
-    let page = document.getElementById("current-page").innerHTML
+    let pageEl = document.getElementById("current-page")
+    let page = pageEl ? pageEl.innerHTML : "1"
     if(page !== pageNumSubstring){
       history.pushState({}, null, getNewUrl(queryString, page));
     }
